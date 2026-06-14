@@ -9,9 +9,6 @@ center_hole_diameter = 30;
 notch_diameter = 20; 
 notch_depth = notch_diameter / 3; 
 
-// Request 1: Increased crown height by 5mm (15mm -> 20mm)
-crown_height = 20;        
-crown_wall_thickness = 2; 
 
 // --- MODEL GENERATION ---
 union() {
@@ -42,20 +39,5 @@ union() {
             cylinder(d=notch_diameter, h=brim_thickness + 2, center=true);
     }
 
-    // SECTION B: THE BOWL-SHAPED CROWN (Taller)
-    translate([0, 0, -brim_thickness/2]) {
-        difference() {
-            // 1. Outer Dome (Scaled to the new 20mm height)
-            scale([1, 1, crown_height / (center_hole_diameter / 2)])
-                sphere(r = center_hole_diameter / 2);
-
-            // 2. Inner Dome Cutout
-            scale([1, 1, (crown_height - crown_wall_thickness) / ((center_hole_diameter - (crown_wall_thickness * 2)) / 2)])
-                sphere(r = (center_hole_diameter / 2) - crown_wall_thickness);
-
-            // 3. Clear out everything below the brim base
-            translate([0, 0, -crown_height])
-                cube([brim_diameter + 10, brim_diameter + 10, crown_height * 2], center=true);
-        }
-    }
+  
 }
