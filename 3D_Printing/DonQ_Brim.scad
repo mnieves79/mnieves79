@@ -6,8 +6,8 @@ brim_thickness = 4;
 center_hole_diameter = 30;
 
 // Request 2: Reduced notch diameter by 10mm (30mm -> 20mm)
-notch_diameter = 20; 
-notch_depth = notch_diameter / 3; 
+notch_diameter = 15; 
+notch_depth = notch_diameter / 2; 
 
 
 // --- MODEL GENERATION ---
